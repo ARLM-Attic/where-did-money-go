@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="3dp"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
+    android:paddingTop="3dp" >
+
+    <Button
+        android:id="@+id/set_from_time_button"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/set_start_time"
+        android:textColor="@android:color/holo_blue_light" />
+
+    <Button
+        android:id="@+id/set_to_time_button"
+        android:layout_below="@id/set_from_time_button"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/set_end_time"
+        android:textColor="@android:color/holo_blue_light" />
+
+    <LinearLayout
+        android:id="@+id/yes_no_button_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/yes_button"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/yes_string"
+            android:textColor="@android:color/holo_blue_light" />
+
+        <Button
+            android:id="@+id/no_button"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/no_string"
+            android:textColor="@android:color/holo_blue_light" />
+    </LinearLayout>
+
+</RelativeLayout>

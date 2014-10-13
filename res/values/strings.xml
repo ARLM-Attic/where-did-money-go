@@ -2,7 +2,10 @@
 <resources>
 
     <string name="app_name">WhereDidMoneyGo</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    <string name="setting">&#160;&#160;设  置&#160;&#160;</string>
+    <string name="set_start_time">设置查询开始时间</string>
+    <string name="set_end_time">设置查询截止时间</string>
+    <string name="yes_string">确 定</string>
+    <string name="no_string">取  消</string>
 </resources>
