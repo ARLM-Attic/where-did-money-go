@@ -25,6 +25,16 @@
         android:layout_height="wrap_content"
         android:text="@string/set_end_time"
         android:textColor="@android:color/holo_blue_light" />
+    
+    <Button
+        android:id="@+id/add_income_button"
+        android:layout_below="@id/set_to_time_button"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_income"
+        android:textColor="@android:color/holo_blue_light" />
+    
 
     <LinearLayout
         android:id="@+id/yes_no_button_field"

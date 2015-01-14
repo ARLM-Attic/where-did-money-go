@@ -17,7 +17,7 @@ public class DatabaseOperator {
 			mContentValues = new ContentValues();
 		}
 		if (mDatabaseHelper == null) {
-			mDatabaseHelper = new DatabaseHelper(context, AppConstant.SQL_TABLE_NAME);
+			mDatabaseHelper = new DatabaseHelper(context, AppConstant.SQL_TABLE_NAME_SEARCH_TIME_INFO);
 		}
 	}
 	
@@ -25,8 +25,8 @@ public class DatabaseOperator {
 		mContentValues.clear();
 		mContentValues.put(columNameInTable, value);
 		mSqLiteDatabase = mDatabaseHelper.getWritableDatabase();
-		if (mSqLiteDatabase.update(AppConstant.SQL_TABLE_NAME, mContentValues, null, null) == 0) {
-			mSqLiteDatabase.insert(AppConstant.SQL_TABLE_NAME, null, mContentValues);
+		if (mSqLiteDatabase.update(AppConstant.SQL_TABLE_NAME_SEARCH_TIME_INFO, mContentValues, null, null) == 0) {
+			mSqLiteDatabase.insert(AppConstant.SQL_TABLE_NAME_SEARCH_TIME_INFO, null, mContentValues);
 		}
 		mSqLiteDatabase.close();
 	}
@@ -34,7 +34,19 @@ public class DatabaseOperator {
 	public String getColumnValueFromDatabase(String columNameInTable) {
 		mSqLiteDatabase = mDatabaseHelper.getReadableDatabase();
 		String res = "";
-		Cursor cursor = mSqLiteDatabase.query(AppConstant.SQL_TABLE_NAME, new String[] {columNameInTable}, null, null, null, null, null);
+		Cursor cursor = mSqLiteDatabase.query(AppConstant.SQL_TABLE_NAME_SEARCH_TIME_INFO, new String[] {columNameInTable}, null, null, null, null, null);
+		while (cursor.moveToNext()) {
+			res = cursor.getString(cursor.getColumnIndex(columNameInTable));
+		}
+		cursor.close();
+		mSqLiteDatabase.close();
+		return res;
+	}
+	
+	public String getColumnValueFromDatabaseEX(String tableNameString, String columNameInTable) {
+		mSqLiteDatabase = mDatabaseHelper.getReadableDatabase();
+		String res = "";
+		Cursor cursor = mSqLiteDatabase.query(tableNameString, new String[] {columNameInTable}, null, null, null, null, null);
 		while (cursor.moveToNext()) {
 			res = cursor.getString(cursor.getColumnIndex(columNameInTable));
 		}

@@ -8,4 +8,5 @@
     <string name="set_end_time">设置查询截止时间</string>
     <string name="yes_string">确 定</string>
     <string name="no_string">取  消</string>
+    <string name="add_income">增加（修改）收入</string>
 </resources>
