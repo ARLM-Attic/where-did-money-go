@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -173,20 +174,30 @@ public class SettingActivity extends Activity{
 			    .setTitle("修改收入")
 			    .setMessage("还没有设置过收入类别，现在就去添加一下吧！")
 			    .setIcon(android.R.drawable.ic_dialog_info)  
-			    .setPositiveButton("确定", mAlertDialogOnClickListener)  
-			    .setNegativeButton("取消", mAlertDialogOnClickListener)  
+			    .setPositiveButton("确定", mIncomeAlertDialogOnClickListener)  
+			    .setNegativeButton("取消", mIncomeAlertDialogOnClickListener)  
 			    .show();  
 				
 			}
 		}
 	};
 	
-	android.content.DialogInterface.OnClickListener mAlertDialogOnClickListener = new android.content.DialogInterface.OnClickListener() {
+	android.content.DialogInterface.OnClickListener mIncomeAlertDialogOnClickListener = new android.content.DialogInterface.OnClickListener() {
 		
 		@Override
 		public void onClick(DialogInterface dialog, int which) {
 			// TODO Auto-generated method stub
-			System.out.println(dialog.toString());
+			switch (which) {
+			case -1:	//OK Button
+				Intent intent = new Intent(SettingActivity.this, ModifyMoneyCategory.class);
+				startActivity(intent);
+				break;
+			case -2:	//Cancel Button
+				dialog.cancel();
+				break;
+			default:
+				break;
+			}
 		}
 	};
 }
