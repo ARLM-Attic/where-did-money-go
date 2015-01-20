@@ -34,7 +34,6 @@
         android:layout_height="wrap_content"
         android:text="@string/add_income"
         android:textColor="@android:color/holo_blue_light" />
-    
 
     <LinearLayout
         android:id="@+id/yes_no_button_field"

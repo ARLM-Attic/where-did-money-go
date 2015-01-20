@@ -177,7 +177,6 @@ public class SettingActivity extends Activity{
 			    .setPositiveButton("确定", mIncomeAlertDialogOnClickListener)  
 			    .setNegativeButton("取消", mIncomeAlertDialogOnClickListener)  
 			    .show();  
-				
 			}
 		}
 	};
@@ -191,11 +190,13 @@ public class SettingActivity extends Activity{
 			case -1:	//OK Button
 				Intent intent = new Intent(SettingActivity.this, ModifyMoneyCategory.class);
 				startActivity(intent);
+				dialog.cancel();
 				break;
 			case -2:	//Cancel Button
 				dialog.cancel();
 				break;
 			default:
+				dialog.cancel();
 				break;
 			}
 		}

@@ -1,5 +1,8 @@
 package com.ericdm.wheredidmoneygo;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+
 public class AppConstant {
 	public static final String SQL_TABLE_NAME_SEARCH_TIME_INFO = "SearchTimeTable";
 	public static final String SQL_TABLE_NAME_INCOME_COLUMN_NAME = "IncomeColumnNameTable";
@@ -11,4 +14,14 @@ public class AppConstant {
 	public static final String COMPARE_DATE_RESULT_BIG = "Bigger";
 	public static final String COMPARE_DATE_RESULT_LESS = "Less";
 	public static final String COMPARE_DATE_RESULT_SAME = "Same";
+	
+	public static void showProgressModelDialog(ProgressDialog dialog, Context context) {
+		dialog = new ProgressDialog(context);
+		dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+		dialog.setTitle("检索数据");
+		dialog.setMessage("正在查询数据库中的数据，请稍后");
+		dialog.setIcon(android.R.drawable.ic_dialog_map);
+		dialog.setCanceledOnTouchOutside(false);
+		dialog.show();
+	}
 }

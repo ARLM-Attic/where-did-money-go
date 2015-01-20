@@ -25,21 +25,29 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000e;
-        public static final int add_income_button=0x7f08000a;
+        public static final int action_settings=0x7f080016;
+        public static final int add_income_button=0x7f080012;
+        public static final int add_outcome_category_button=0x7f08000b;
+        public static final int add_outcome_money_button=0x7f08000c;
+        public static final int can_modify_money_textview1=0x7f080006;
+        public static final int can_modify_money_textview2=0x7f080007;
+        public static final int edit_button_field=0x7f08000a;
         public static final int from_time_text_view=0x7f080002;
-        public static final int left_money_field=0x7f080005;
-        public static final int left_money_textview1=0x7f080006;
-        public static final int left_money_textview2=0x7f080007;
-        public static final int no_button=0x7f08000d;
-        public static final int set_from_time_button=0x7f080008;
-        public static final int set_to_time_button=0x7f080009;
+        public static final int money_info_tablelayout=0x7f080005;
+        public static final int no_button=0x7f080015;
+        public static final int no_button_modify=0x7f08000f;
+        public static final int set_from_time_button=0x7f080010;
+        public static final int set_to_time_button=0x7f080011;
         public static final int setting_button=0x7f080004;
         public static final int time_and_setting_button_field=0x7f080000;
         public static final int time_field=0x7f080001;
         public static final int to_time_text_view=0x7f080003;
-        public static final int yes_button=0x7f08000c;
-        public static final int yes_no_button_field=0x7f08000b;
+        public static final int total_money_textview1=0x7f080008;
+        public static final int total_money_textview2=0x7f080009;
+        public static final int yes_button=0x7f080014;
+        public static final int yes_button_modify=0x7f08000e;
+        public static final int yes_no_button_field=0x7f080013;
+        public static final int yes_no_button_field_modify=0x7f08000d;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -52,11 +60,16 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int add_income=0x7f050007;
+        public static final int add_outcome_category=0x7f05000b;
+        public static final int add_outcome_money=0x7f05000c;
         public static final int app_name=0x7f050000;
+        public static final int can_modify_money=0x7f050008;
         public static final int no_string=0x7f050006;
         public static final int set_end_time=0x7f050004;
         public static final int set_start_time=0x7f050003;
         public static final int setting=0x7f050002;
+        public static final int total_income=0x7f05000a;
+        public static final int total_outcome=0x7f050009;
         public static final int yes_string=0x7f050005;
     }
     public static final class style {
