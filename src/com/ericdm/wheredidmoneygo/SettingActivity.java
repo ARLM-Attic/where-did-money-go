@@ -1,6 +1,7 @@
 package com.ericdm.wheredidmoneygo;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 import com.ericdm.databaseoperator.DatabaseOperator;
@@ -58,7 +59,7 @@ public class SettingActivity extends Activity{
 	        dateCalendar.set(Calendar.YEAR, year);
 	        dateCalendar.set(Calendar.MONTH, monthOfYear);
 	        dateCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-			DatabaseOperator databaseOperator = new DatabaseOperator(SettingActivity.this);
+			DatabaseOperator databaseOperator = new DatabaseOperator(SettingActivity.this, AppConstant.SQL_TABLE_NAME_SEARCH_TIME_INFO);
 			String fromTimeString = databaseOperator.getColumnValueFromDatabase(AppConstant.FROM_TIME_COLUMN_IN_DATABASE_TABLE);	
 			String toTimeString = mDateFormat.format(dateCalendar.getTime());
 			if ((TimeManager.compareDate(toTimeString, fromTimeString).equals(AppConstant.COMPARE_DATE_RESULT_LESS))) {
@@ -83,7 +84,7 @@ public class SettingActivity extends Activity{
 	        dateCalendar.set(Calendar.YEAR, year);
 	        dateCalendar.set(Calendar.MONTH, monthOfYear);
 	        dateCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-			DatabaseOperator databaseOperator = new DatabaseOperator(SettingActivity.this);
+			DatabaseOperator databaseOperator = new DatabaseOperator(SettingActivity.this, AppConstant.SQL_TABLE_NAME_SEARCH_TIME_INFO);
 			String toTimeString = databaseOperator.getColumnValueFromDatabase(AppConstant.TO_TIME_COLUMN_IN_DATABASE_TABLE);
 			String fromTtimeString = mDateFormat.format(dateCalendar.getTime());
 			if ((TimeManager.compareDate(fromTtimeString, toTimeString).equals(AppConstant.COMPARE_DATE_RESULT_BIG))) {
@@ -113,7 +114,7 @@ public class SettingActivity extends Activity{
 		
 		@Override
 		public void onClick(View v) {
-			DatabaseOperator databaseOperator = new DatabaseOperator(SettingActivity.this);
+			DatabaseOperator databaseOperator = new DatabaseOperator(SettingActivity.this, AppConstant.SQL_TABLE_NAME_SEARCH_TIME_INFO);
 			if (mIsFromTimeSet) {
 				databaseOperator.insertValueToDatabase(AppConstant.FROM_TIME_COLUMN_IN_DATABASE_TABLE, mDateFormat.format(mFromDateCalendar.getTime()));
 			}
@@ -129,7 +130,7 @@ public class SettingActivity extends Activity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			DatabaseOperator databaseOperator = new DatabaseOperator(SettingActivity.this);
+			DatabaseOperator databaseOperator = new DatabaseOperator(SettingActivity.this, AppConstant.SQL_TABLE_NAME_SEARCH_TIME_INFO);
 			String currentToTimeString = databaseOperator.getColumnValueFromDatabase(AppConstant.TO_TIME_COLUMN_IN_DATABASE_TABLE);
 			String[] currentToTimeStrings = currentToTimeString.split("-");
 			int year = Integer.parseInt(currentToTimeStrings[0]);
@@ -143,7 +144,7 @@ public class SettingActivity extends Activity{
 		
 		@Override
 		public void onClick(View v) {
-			DatabaseOperator databaseOperator = new DatabaseOperator(SettingActivity.this);
+			DatabaseOperator databaseOperator = new DatabaseOperator(SettingActivity.this, AppConstant.SQL_TABLE_NAME_SEARCH_TIME_INFO);
 			String currentFromTimeString = databaseOperator.getColumnValueFromDatabase(AppConstant.FROM_TIME_COLUMN_IN_DATABASE_TABLE);
 			String[] currentFromTimeStrings = currentFromTimeString.split("-");
 			int year = Integer.parseInt(currentFromTimeStrings[0]);
@@ -154,9 +155,10 @@ public class SettingActivity extends Activity{
 	};
 	
 	Boolean checkDatabaseHasRecord(String tableNameString, String columnNameString) {
-    	DatabaseOperator databaseOperator = new DatabaseOperator(SettingActivity.this);
-    	String valuesString = databaseOperator.getColumnValueFromDatabaseEX(tableNameString, columnNameString);
-    	if (valuesString.equals("")) {
+    	DatabaseOperator databaseOperator = new DatabaseOperator(SettingActivity.this, tableNameString);
+    	ArrayList<String> reStrings = new ArrayList<String>();
+    	reStrings = databaseOperator.getColumnValueFromDatabaseEX(tableNameString, columnNameString);
+    	if (reStrings.isEmpty()) {
     		return false;
 		} else {
 			return true;
@@ -168,7 +170,7 @@ public class SettingActivity extends Activity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			if (!checkDatabaseHasRecord(AppConstant.SQL_TABLE_NAME_INCOME_COLUMN_NAME, AppConstant.COLUMN_NAME_INCOME_COLUMN_NAME)) {
+			if (!checkDatabaseHasRecord(AppConstant.SQL_TABLE_NAME_OUTCOME_COLUMN_NAME, AppConstant.COLUMN_NAME_OUTCOME_COLUMN_NAME)) {
 				//Not has any income category set yet.
 			    new AlertDialog.Builder(SettingActivity.this)  
 			    .setTitle("修改收入")
@@ -177,6 +179,9 @@ public class SettingActivity extends Activity{
 			    .setPositiveButton("确定", mIncomeAlertDialogOnClickListener)  
 			    .setNegativeButton("取消", mIncomeAlertDialogOnClickListener)  
 			    .show();  
+			} else {
+				Intent intent = new Intent(SettingActivity.this, ModifyMoneyCategory.class);
+				startActivity(intent);
 			}
 		}
 	};

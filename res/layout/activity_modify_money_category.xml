@@ -52,6 +52,8 @@
         </TableRow>
     </TableLayout>
     
+    
+    
     <LinearLayout
         android:id="@+id/edit_button_field"
         android:layout_width="match_parent"
@@ -78,7 +80,17 @@
             android:textColor="@android:color/holo_blue_light" />
     </LinearLayout>
     
-
+    <ListView
+        android:id="@+id/category_money_list_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_button_field"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="#210"
+        android:dividerHeight="1px"
+        android:fastScrollEnabled="true" >
+    </ListView>
+    
     <LinearLayout
         android:id="@+id/yes_no_button_field_modify"
         android:layout_width="match_parent"

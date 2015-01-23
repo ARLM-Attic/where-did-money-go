@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
 
     private void initTimeValueForActivity() {
     	TimeManager timeManager = new TimeManager();
-    	DatabaseOperator databaseOperator = new DatabaseOperator(MainActivity.this);
+    	DatabaseOperator databaseOperator = new DatabaseOperator(MainActivity.this, AppConstant.SQL_TABLE_NAME_SEARCH_TIME_INFO);
     	mCurrentFromTime = databaseOperator.getColumnValueFromDatabase(AppConstant.FROM_TIME_COLUMN_IN_DATABASE_TABLE);
     	mCurrentToTime = databaseOperator.getColumnValueFromDatabase(AppConstant.TO_TIME_COLUMN_IN_DATABASE_TABLE);
         if (mCurrentFromTime.equals("") || mCurrentToTime.equals("")) {  //First time running, query time has not been set yet.

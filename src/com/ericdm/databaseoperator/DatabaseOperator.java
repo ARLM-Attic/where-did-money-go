@@ -1,5 +1,7 @@
 package com.ericdm.databaseoperator;
 
+import java.util.ArrayList;
+
 import com.ericdm.wheredidmoneygo.AppConstant;
 
 import android.content.ContentValues;
@@ -12,12 +14,12 @@ public class DatabaseOperator {
 	DatabaseHelper mDatabaseHelper = null;
 	SQLiteDatabase mSqLiteDatabase = null;
 	
-	public DatabaseOperator(Context context) {
+	public DatabaseOperator(Context context, String tableNameString) {
 		if (mContentValues == null) {
 			mContentValues = new ContentValues();
 		}
 		if (mDatabaseHelper == null) {
-			mDatabaseHelper = new DatabaseHelper(context, AppConstant.SQL_TABLE_NAME_SEARCH_TIME_INFO);
+			mDatabaseHelper = new DatabaseHelper(context, tableNameString);
 		}
 	}
 	
@@ -43,15 +45,25 @@ public class DatabaseOperator {
 		return res;
 	}
 	
-	public String getColumnValueFromDatabaseEX(String tableNameString, String columNameInTable) {
+	public ArrayList<String> getColumnValueFromDatabaseEX(String tableNameString, String columNameInTable) {
 		mSqLiteDatabase = mDatabaseHelper.getReadableDatabase();
-		String res = "";
+		ArrayList<String> resStrings = new ArrayList<String>();
 		Cursor cursor = mSqLiteDatabase.query(tableNameString, new String[] {columNameInTable}, null, null, null, null, null);
 		while (cursor.moveToNext()) {
-			res = cursor.getString(cursor.getColumnIndex(columNameInTable));
+			resStrings.add(cursor.getString(cursor.getColumnIndex(columNameInTable)));
 		}
 		cursor.close();
 		mSqLiteDatabase.close();
-		return res;
+		return resStrings;
+	}
+	
+	public void insertValueToDatabaseEX(String tableNameString, String columNameInTable, String value) {
+		mContentValues.clear();
+		mContentValues.put(columNameInTable, value);
+		mSqLiteDatabase = mDatabaseHelper.getWritableDatabase();
+		if (mSqLiteDatabase.update(tableNameString, mContentValues, null, null) == 0) {
+			mSqLiteDatabase.insert(tableNameString, null, mContentValues);
+		}
+		mSqLiteDatabase.close();
 	}
 }
