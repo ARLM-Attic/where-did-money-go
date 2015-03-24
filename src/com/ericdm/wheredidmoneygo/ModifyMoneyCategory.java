@@ -47,12 +47,13 @@ public class ModifyMoneyCategory extends Activity{
 		mCancelButton = (Button) findViewById(R.id.no_button_modify);
 		mAddOutcomeCatgoryButton = (Button) findViewById(R.id.add_outcome_category_button);
 		mAddOutcomeMoneyButton = (Button) findViewById(R.id.add_outcome_money_button);
-		mCanModifyMoneyTextView = (TextView) findViewById(R.id.can_modify_money_textview2);
+//		mCanModifyMoneyTextView = (TextView) findViewById(R.id.can_modify_money_textview2);
+//		mCanModifyMoneyTextView.setText(mCanModifyMoneyInt + "" );
 		mTotalOutcomeMoneyTextView = (TextView) findViewById(R.id.total_money_textview2);
 		mCotegoryMoneyListView = (ListView) findViewById(R.id.category_money_list_view);
 		mCancelButton.setOnClickListener(mCancelButtonOnClickListener);
 		mAddOutcomeCatgoryButton.setOnClickListener(mAddOutcomeCategoryButtonOnClickListener);
-		mCanModifyMoneyTextView.setText(mCanModifyMoneyInt + "" );
+
 		mTotalOutcomeMoneyTextView.setText(mTotalOutcomeMoneyInt + "");
 		mInputedCategoryNameString = "";
 		mOutcomeColumnNameArrayList = new ArrayList<String>();
@@ -88,7 +89,6 @@ public class ModifyMoneyCategory extends Activity{
 			mCotegoryMoneyListView.setAdapter(categoryMoneyListviewAdapter);
 			categoryMoneyListviewAdapter.notifyDataSetChanged();		
 			mProgressDialog.cancel(); 
-			
 		}
 	};
 	
@@ -107,6 +107,8 @@ public class ModifyMoneyCategory extends Activity{
 			if (!outcomeCategoryNameArrayList.isEmpty()) {
 				mOutcomeColumnNameArrayList = outcomeCategoryNameArrayList;	
 				mUpdateUIHandler.sendMessage(msg);   
+			} else {
+				mProgressDialog.cancel();
 			}
 		}
 	}

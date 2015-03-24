@@ -13,12 +13,16 @@
             android:id="@+id/category_name_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_green_light"
+            android:textSize="20sp"
             android:layout_weight="2" />
 
         <TextView
             android:id="@+id/money_count_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_purple"
+             android:textSize="20sp"
             android:layout_weight="1"
             android:gravity="right" />
     </LinearLayout>    

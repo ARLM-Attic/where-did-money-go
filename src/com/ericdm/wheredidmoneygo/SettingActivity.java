@@ -173,8 +173,8 @@ public class SettingActivity extends Activity{
 			if (!checkDatabaseHasRecord(AppConstant.SQL_TABLE_NAME_OUTCOME_COLUMN_NAME, AppConstant.COLUMN_NAME_OUTCOME_COLUMN_NAME)) {
 				//Not has any income category set yet.
 			    new AlertDialog.Builder(SettingActivity.this)  
-			    .setTitle("修改收入")
-			    .setMessage("还没有设置过收入类别，现在就去添加一下吧！")
+			    .setTitle("修改支出")
+			    .setMessage("还没有设置过支出类别，现在就去添加一下吧！")
 			    .setIcon(android.R.drawable.ic_dialog_info)  
 			    .setPositiveButton("确定", mIncomeAlertDialogOnClickListener)  
 			    .setNegativeButton("取消", mIncomeAlertDialogOnClickListener)  

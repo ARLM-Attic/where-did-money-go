@@ -61,9 +61,12 @@ public class DatabaseOperator {
 		mContentValues.clear();
 		mContentValues.put(columNameInTable, value);
 		mSqLiteDatabase = mDatabaseHelper.getWritableDatabase();
+		mSqLiteDatabase.insert(tableNameString, null, mContentValues);
+		/*
 		if (mSqLiteDatabase.update(tableNameString, mContentValues, null, null) == 0) {
 			mSqLiteDatabase.insert(tableNameString, null, mContentValues);
 		}
+		*/
 		mSqLiteDatabase.close();
 	}
 }
